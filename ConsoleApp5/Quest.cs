@@ -1,29 +1,40 @@
-﻿namespace QuestProgressTracker
+﻿using System.Runtime.CompilerServices;
+using QuestProgressTracker;
+namespace QuestProgressTracker
 {
     public class Quest
     {
-        private string v;
-
+        private string name ; //v = nMEW
+        private List<Objective> objectivetime = new List<Objective>();
         public Quest(string v)
         {
-            this.v = v;
+          
+
+            //this.v = v;
         }
 
-        public bool IsCompleted { get; set; }
-
-        public void AddObjective(string v1, int v2)
+        public bool IsCompleted
         {
-            throw new NotImplementedException();
+            get 
+            { return objectivetime.All(o => o.Iscompleted); }
         }
 
-        public Objective GetObjective(string v)
+        public void AddObjective(string name, int amount) => objectivetimeAdd(new Objective { Name, RequiredAmount });
+
+        public Objective GetObjective(string name , int amount )
         {
-            throw new NotImplementedException();
+            foreach (var objective in objectivetime)
+            {
+                if (objective.Name == name)
+                {
+
+                    return objective;
+                }
+            }
+            return null;
         }
 
-        public void ProgressObjective(string v1, int v2)
-        {
-            throw new NotImplementedException();
-        }
+        public void ProgressObjective(string name )
+       
     }
 }
