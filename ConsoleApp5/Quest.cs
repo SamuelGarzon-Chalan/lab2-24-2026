@@ -19,7 +19,10 @@ namespace QuestProgressTracker
             { return objectivetime.All(o => o.Iscompleted); }
         }
 
-        public void AddObjective(string name, int amount) => objectivetimeAdd(new Objective { Name, RequiredAmount });
+        public void AddObjective(string name, int amount) ;
+        {
+
+        }
 
         public Objective GetObjective(string name , int amount )
         {
@@ -34,7 +37,16 @@ namespace QuestProgressTracker
             return null;
         }
 
-        public void ProgressObjective(string name )
-       
+        public void ProgressObjective(string name , int amount  )
+        {  foreach (var objective in objectivetime)
+            {
+                if (objective.Name == name)
+                {
+                    objective.Progress(amount);
+                    return;
+                }
+            }
+        }
+      
     }
 }
