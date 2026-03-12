@@ -7,17 +7,19 @@ namespace QuestProgressTracker
     {
         private string name;
         private List<Objective> objectivetime = new List<Objective>();
+        private bool isTurnedIn;
 
         public Quest(string v)
         {
             name = v;
+            isTurnedIn = false;
         }
 
         public bool IsCompleted
         {
             get
             {
-                return objectivetime.All(o => o.IsCompleted);
+                return objectivetime.All(o => o.IsCompleted) && isTurnedIn;
             }
         }
 
@@ -36,7 +38,6 @@ namespace QuestProgressTracker
                     return objective;
                 }
             }
-
             return null;
         }
 
@@ -50,6 +51,11 @@ namespace QuestProgressTracker
                     return;
                 }
             }
+        }
+
+        public void TurnIn()
+        {
+            isTurnedIn = true;
         }
     }
 }
