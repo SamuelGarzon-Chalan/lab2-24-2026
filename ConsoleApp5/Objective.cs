@@ -17,10 +17,12 @@
 
         public void Progress(int amount)
         {
-            if (amount <= 0) return;
+            if (CurrentAmount + amount > RequiredAmount)
+            {
+                throw new InvalidOperationException("Progress exceeds required amount.");
+            }
 
-            int newAmount = CurrentAmount + amount;
-            CurrentAmount = newAmount > RequiredAmount ? RequiredAmount : newAmount;
+            CurrentAmount += amount;
         }
     }
 }
